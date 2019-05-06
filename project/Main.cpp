@@ -10,13 +10,13 @@ Opts options= Opts();
 
 
 void printDialogue(){
-	std::cerr<<"Ray Tracer: by Daniel Tchorni\n"<<
-			"Usage:\n"<<
+	std::cout<<"Ray Tracer: by Daniel Tchorni\n"<<
+			"Usage: ./Raytracer [file] [flags]\n"<<
 			"\t [*.lua file]\n"<<
-			"\t\t -d (exclude diffuse portion of lighting calculation\n"<<
-			"\t\t -s (exclude specular portion of lighting calculation\n"<<
+			"\t\t -d (exclude diffuse portion of lighting calculation)\n"<<
+			"\t\t -s (exclude specular portion of lighting calculation)\n"<<
 			"\t\t -a (exclude ambient light calculation) \n"<<
-			"\t\t -b (produce the bounding volumes rather than the meshes\n"<<
+			"\t\t -b (produce the bounding volumes rather than the meshes)\n"<<
 			"\t\t -sh (remove shadows)\n"<<
 			"\t\t -ph (Completely disable Phong lighting)\n"<<
 			"\t\t -th (disable multi-threading optimizations)\n"<<
@@ -79,7 +79,11 @@ int main(int argc, char** argv)
 	srand(0);
 	std::string filename = "Assets/simple.lua";
 	if (argc >= 2) {
-		filename = argv[1];
+        if(strcmp(argv[1],"-h")==0) {
+            printDialogue();
+            return 0;
+        }
+        filename = argv[1];
 		if(!handleFlags(argc,argv)){
 			return 1;
 		}

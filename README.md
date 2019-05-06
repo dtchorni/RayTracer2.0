@@ -18,6 +18,13 @@
 
 
 ---
+fixes opengl bugs
+sudo apt-get install freeglut3-dev
+
+fixes randr cmake bug
+sudo apt-get install xorg-dev libglu1-mesa-dev
+
+
 
 ## Building Projects
 We use **premake4** as our cross-platform build system. First you will need to build all
